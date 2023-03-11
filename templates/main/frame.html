@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Unisign</title>
+        <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon" />
+        <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    </head>
+    <body>
+        <main>
+            {% comment %} <form action="{% url 'searchres' %}" method="post">
+            {% csrf_token %}
+            {{ search_form }}
+            <input type="submit" value="Поиск"> {% endcomment %}
+            </form>
+            {% block content %}
+            {% endblock %}
+        </main>
+    </body>
+</html>

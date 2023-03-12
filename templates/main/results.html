@@ -1,0 +1,11 @@
+{% extends 'main/frame.html' %}
+
+{% block content %}
+{% for i in p %}
+<a href="{% url 'view_petition' i.id %}">
+{{i.title}}
+<br>
+{{i.text}}
+</a>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'main/frame.html' %}
+
+{% block content %}
+Введите смс
+<form action="" method="post">
+                
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <input type="submit" value="Подтвердить">
+
+</form>
+{% endblock %}

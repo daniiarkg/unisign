@@ -1,13 +1,26 @@
 from django.db import models
-from django.db.utils import IntegrityError
+from django.conf import settings
+from django.utils.timezone import now
+from django.contrib.auth.models import User
 
-# ТЕСТ МОДЕЛЬ
+
+class Citizen(models.Model):
+    def __str__(self):
+        return self.user.first_name + self.user.last_name
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    pin = models.CharField(max_length=14, unique=True)
+    phone = models.CharField(max_length=12, unique=True)
 
 
-class Test(models.Model):
-    bity = models.CharField(unique=True, max_length=50)
-
-    def save(self):
-        if Test.objects.filter(bity=self.bity):
-            self.bity = 'NO'
-        super(Test, self).save()
+class Petition(models.Model):
+    def __str__(self):
+        return self.title
+    author = models.ForeignKey(Citizen,
+                               on_delete=models.CASCADE
+                               )
+    image = models.ImageField(upload_to='main')
+    title = models.CharField(max_length=60, null=True)
+    text = models.TextField(null=True)
+    date = models.DateField(default=now())
+    votes = models.IntegerField(default=0)
+    finish = models.BooleanField(default=False)

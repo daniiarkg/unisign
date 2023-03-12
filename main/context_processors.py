@@ -1,7 +1,7 @@
 from .forms import PetitionSearchForm
 
 
-def search_user(request):
+def search_petition(request):
     return {
         'search_form': PetitionSearchForm()
     }

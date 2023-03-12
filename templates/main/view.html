@@ -1,0 +1,9 @@
+{% extends 'main/frame.html' %}
+
+{% block content %}
+{{ p.title }}
+{{ p.text }}
+<img src='{{ p.image.url }}'>
+{{ p.votes }}
+{{ p.date }}
+{% endblock %}

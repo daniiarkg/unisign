@@ -1,0 +1,12 @@
+{% extends 'main/frame.html' %}
+
+{% block content %}
+<form action="" method="post">
+                
+    {% csrf_token %}
+    {{ f.as_p }}
+
+    <input type="submit" value="Зарегистрироваться">
+
+</form>
+{% endblock %}

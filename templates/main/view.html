@@ -1,9 +1,39 @@
-{% extends 'main/frame.html' %}
-
-{% block content %}
-{{ p.title }}
-{{ p.text }}
-<img src='{{ p.image.url }}'>
-{{ p.votes }}
-{{ p.date }}
+{% extends 'main/frame.html' %} {% block content %}
+<div class="container">
+  <section class="main-block">
+    <div class="main-block-content">
+      <!-- Блок контента  -->
+      <div class="left-content">
+        <div class="left-content-text">
+          <div class="main-text">
+            <!-- Левая часть блок контента о теме петиции -->
+            <div class="main-text-index-theme"><p>№{{p.id}}</p></div>
+            <!-- Порядковый номер петиции  -->
+            <div class="main-text-description"><h1>{{p.title}}</h1></div>
+            <!-- Тема контента  -->
+            <div class="main-text-date">
+              <p>Дата публикации петиции:{{p.date}}</p>
+            </div>
+            <!-- Дата публикации петиции  -->
+          </div>
+          <div class="main-data">
+            <!-- Правая часть блок контента  -->
+            <div class="main-data-number">
+              <!-- Количество голосов  -->
+              <h1 id="data">{{p.votes}}</h1>
+              <p>голосов</p>
+            </div>
+            <form class="main-data-button">
+              <button>Подписать<img /></button>
+              <!-- Кнопка подписать -->
+            </form>
+          </div>
+        </div>
+        <div class="maxWidthScale">
+          <p class="scale"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
 {% endblock %}

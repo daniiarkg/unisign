@@ -1,12 +1,13 @@
-{% extends 'main/frame.html' %}
+{% extends 'main/frame.html' %} {% block content %}
+<section class="main-block" style="text-align: center">
+  <form action="" method="post">
+    {% csrf_token %} {{ f.as_p }}
 
-{% block content %}
-<form action="" method="post">
-                
-    {% csrf_token %}
-    {{ f.as_p }}
+    <input type="submit" value="Войти" />
+  </form>
 
-    <input type="submit" value="Войти">
-
-</form>
+  <a href="{% url 'register' %}" style="font-size: 24px"
+    >Нет аккаунта? Зарегистрироваться</a
+  >
+</section>
 {% endblock %}

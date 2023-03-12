@@ -1,12 +1,7 @@
-{% extends 'main/frame.html' %}
-
-{% block content %}
+{% extends 'main/frame.html' %} {% block content %}
 <form action="" method="post">
-                
-    {% csrf_token %}
-    {{ f.as_p }}
+  {% csrf_token %} {{ f.as_p }}
 
-    <input type="submit" value="Зарегистрироваться">
-
+  <input class="sign-up" type="submit" value="Зарегистрироваться" />
 </form>
 {% endblock %}

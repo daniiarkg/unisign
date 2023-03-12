@@ -1,10 +1,49 @@
 {% extends 'main/frame.html' %}
-
+<!------>
 {% block content %}
-Hello world!
-{% if flag %}
-аут
-{% else %}
-не аут
-{% endif %}
+<h1>Все петиции</h1>
+<div class="container" id="main-page-container">
+  <section class="main-block">
+    <!-- Блок контента  -->
+    {% for i in o %}
+    <a style="color: black" href="{% url 'view_petition' i.id %}">
+      <div class="main-block-content">
+        <!-- Блок контента  -->
+        <div class="left-content">
+          <div class="left-content-text">
+            <div class="main-text">
+              <!-- Левая часть блок контента о теме петиции -->
+              <div class="main-text-index-theme"><p>{{o.id}}</p></div>
+              <!-- Порядковый номер петиции  -->
+              <div class="main-text-description">
+                <h1>{{i.title}}</h1>
+              </div>
+              <!-- Тема контента  -->
+              <div class="main-text-date">
+                <p>Дата публикации петиции:{{i.date}}</p>
+              </div>
+              <!-- Дата публикации петиции  -->
+            </div>
+            <div class="main-data">
+              <!-- Правая часть блок контента  -->
+              <div class="main-data-number">
+                <!-- Количество голосов  -->
+                <h1 id="data">{{i.votes}}</h1>
+                <p>голосов</p>
+              </div>
+              <form class="main-data-button">
+                <!-- Кнопка подписать -->
+              </form>
+            </div>
+          </div>
+          <div class="maxWidthScale">
+            <p class="scale"></p>
+          </div>
+        </div>
+        <div class="right-content"></div>
+      </div>
+    </a>
+    {%endfor%}
+  </section>
+</div>
 {% endblock %}

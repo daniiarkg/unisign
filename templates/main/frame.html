@@ -1,31 +1,66 @@
 {% load static %}
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Unisign</title>
-        <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon" />
-        <link rel="stylesheet" href="{% static 'css/style.css' %}" />
-    </head>
-    <body>
-        <main>
-            
-
-            <form action="{% url 'search' %}" method="post">
-                
+  <head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <div class="header-top">
+          <div class="archor"><h1>UNISIGN</h1></div>
+          <form id="header-form" action="{% url 'search' %}" method="post">
+            <div class="header-search">
                 {% csrf_token %}
-                {{ search_form.as_p }}
+              {{search_form.as_p}}
+              <input type="submit" value="Поиск">
+            </div>
+          </form>
+          <div class="archor"><a href="{% url 'create_petition' %}">Создать петицию</a></div>
+          <div class="archor"><a href="{% url 'login' %}">Авторизация/Регистрация</a></div>
+        </div>
+        <div class="header-middle">
+          <div class="header-middle-text">
+            <h1>СИЛА В ЕДИНСТВЕ</h1>
+            <p>БОЛЕЕ 1000 ЧЕЛОВЕК УЖЕ ПОДПИСАЛИ. ШАГ ЗА ШАГОМ КАЖДЫЙ ДЕНЬ</p>
+          </div>
+          <p id="header-middle-button"><a href="{% url 'create_petition' %}">Создать петицию</a></p>
+        </div>
+      </div>
+    </header>
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+    <footer style="text-align: center;">
+      <p><h3>2023г. Unisign</h3></p>
+    </footer>
+    <script>
+      function disemvowel(str) {
+        let result = [];
+        stringVar = [];
+        for (let i = 0; i < str.length; i++) {
+          stringVar[i] = str[i];
+          let count = str.length - 2;
+          stringVar.splice(count, 2);
+          result = stringVar.join("");
+        }
+        return result;
+      }
 
-                <input type="submit" value="Поиск">
+      let data = document.getElementsByClassName("data")[0].innerHTML;
 
-            </form>
-
-
-            {% block content %}
-            {% endblock %}
-
-
-        </main>
-    </body>
+      let maxWidthScale = getComputedStyle(
+        document.getElementsByClassName("maxWidthScale")[0]
+      ).width;
+      let scaleWidth = document.getElementsByClassName("scale")[0];
+      let summ = Number(data) / (Number(disemvowel(maxWidthScale)) / 100);
+      // alert(summ);
+      // alert(maxWidthScale);
+      // alert(disemvowel(maxWidthScale));
+      scaleWidth.style.width = summ + "%";
+    </script>
+  </body>
 </html>

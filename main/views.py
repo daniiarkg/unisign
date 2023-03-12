@@ -46,7 +46,7 @@ def search_res(request):
         if form.is_valid():
             p = Petition.objects.filter(
                 title__contains=form.cleaned_data['title'])
-            return render(request, 'main/results.html', {'p': p})
+            return render(request, 'main/results.html', {'o': p})
         else:
             return HttpResponseNotFound()
     else:
@@ -73,4 +73,4 @@ def create_petition(request):
 
 
 def main(request):
-    return render(request, 'main/index.html', {'flag': request.user.is_authenticated})
+    return render(request, 'main/index.html', {'o': Petition.objects.all().order_by('votes')})

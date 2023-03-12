@@ -53,12 +53,19 @@ def search_res(request):
         return HttpResponseNotFound()
 
 
+def reg_petition(request, id):
+    p = Petition.objects.get(id=id)
+    p.votes += 1
+    p.save()
+    return render(request, 'main/sub.html', {})
+
+
 def view_petition(request, id):
     p = Petition.objects.get(id=id)
     return render(request, 'main/view.html', {'p': p})
 
 
-@login_required(login_url='login/')
+@ login_required(login_url='login/')
 def create_petition(request):
     if request.method == 'POST':
         print(request.user)

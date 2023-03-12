@@ -21,4 +21,3 @@ class Citizen(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     pin = models.CharField(max_length=14, unique=True)
     phone = models.CharField(max_length=12, unique=True)
-    pets = models.ManyToManyField(Petition)

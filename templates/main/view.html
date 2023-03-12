@@ -10,6 +10,7 @@
             <div class="main-text-index-theme"><p>№{{p.id}}</p></div>
             <!-- Порядковый номер петиции  -->
             <div class="main-text-description"><h1>{{p.title}}</h1></div>
+            <p>{{p.text}}</p>
             <!-- Тема контента  -->
             <div class="main-text-date">
               <p>Дата публикации петиции:{{p.date}}</p>
@@ -24,7 +25,7 @@
               <p>голосов</p>
             </div>
             <form class="main-data-button">
-              <button>Подписать<img /></button>
+              <a href="{% url 'reg_pet' p.id %}">Подписать</a>
               <!-- Кнопка подписать -->
             </form>
           </div>
